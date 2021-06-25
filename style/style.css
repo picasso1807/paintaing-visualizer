@@ -1,0 +1,471 @@
+body {
+  margin: 0px;
+}
+div.no-padding .input-range{
+  margin-right: -50px;
+}
+
+.fullscreen{
+  height: 100vh !important;
+  width: 100vw !important;
+  margin: unset !important;
+}
+.inteface-hidden .interface-label{
+  opacity: .50;
+}
+
+.inteface-hidden .slideshow-right-control,.inteface-hidden div.slideshow-thumbnails,.inteface-hidden .btn-slideshow-footer{
+  display: none;
+}
+
+#draggable{
+  background-color: transparent;
+  width: 200px;
+  position: absolute;
+  margin-bottom: 0px !important;
+  z-index: 99;
+}
+
+.draggable-image img{
+  width: 100%;
+  height: 100%;
+  transition: box-shadow 300ms ease;
+  box-shadow: -2px 7px 40px -15px rgba(0,0,0,.6), -2px 3px 6px -2px rgba(0,0,0,.3);
+}
+
+.pull-up{
+  z-index: 9999 !important;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  background: linear-gradient(180deg, #f2f2f2 0px, #fff 60px, #fff calc(100% - 60px), #f2f2f2 100%);
+  width: 100%; /* Can be in percentage also. */
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container .content{
+  width: 100%;
+  margin: 70px;
+}
+
+.top-buttons{
+  width: 20%;
+  margin:15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-height: 10px;
+}
+
+.slideshow-footer {
+  position: absolute;
+  /* right: 0; */
+  bottom: 75px;
+  right: 70px;
+}
+
+.slideshow-footer .vue-swatches__row div{
+  float: left;
+  display: flex;
+}
+
+.btn-slideshow{
+  float: right;
+  height: 40px;
+  width: 40px;
+  font-size: 18px;
+  border: none;
+  color: #422222;
+  border-radius: 3px;
+  margin-right: 5px;
+  background-color: white;
+  font-weight: 100;
+}
+.btn-slideshow:focus{
+  outline: none;
+}
+
+.btn-slideshow-footer:focus{
+  outline: none;
+}
+
+.range-slider{
+  display: none;
+}
+
+.btn-slideshow-footer{
+  /* 
+  height: 40px;
+  font-size: 18px;
+  border: none;
+  color: #422222;
+  border-radius: 5px;
+  margin-right: 16px;
+  background-color: white;
+  font-weight: 100;
+  padding:0 5px; */
+  margin: 5px;
+  float: right;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  vertical-align: middle;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  font-family: apercu pro,arial,sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 14px;
+  text-decoration: none;
+  user-select: none;
+  color: #000;
+  background-color: #fff;
+  transition: all 150ms ease-in-out;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.slideshow-header{
+  margin-top: 10px;
+  margin-left: 10px;
+  position: absolute;
+}
+.slideshow-thumbnails{
+  position: absolute;
+  width: calc(100vw - 140px);
+  bottom: 150px;
+}
+
+.slideshow-thumbnails .gallery img{
+  width: 55px;
+  height: 38px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.slideshow-header div{
+  margin-left: 50px;
+  font-size: 15px;
+  font-family: none;
+}
+
+.slideshow-body{
+  margin: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slideshow-right-control{
+  position: absolute;
+  right: 0;
+}
+/* .slideshow-right-control div.range-slider{
+  padding-right: 0px;
+} */
+
+
+.pic-it-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 6;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+/* Hide the images by default */
+.mySlides {
+  display: none;
+  height: 100%;
+  width: 100%;
+}
+.mySlides canvas,.mySlides video{
+    width: 100%;
+    border-radius: 10px;
+    height: 100%; 
+    object-fit: cover;
+    /* display: none; */
+}
+
+/* .mySlides video{
+  opacity: 0;
+  display: none;
+} */
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+
+/*#region Switch*/
+
+.switch {
+position: absolute;
+display: inline-block;
+width: 40px;
+height: 5px;
+margin-top: 7px;
+}
+
+.switch input { 
+opacity: 0;
+width: 0;
+height: 0;
+}
+
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+-webkit-transition: .4s;
+transition: .4s;
+}
+
+.slider:before {
+position: absolute;
+content: "";
+height: 15px;
+width: 15px;
+left: 0px;
+bottom: -5px;
+background-color: #270303;
+-webkit-transition: .4s;
+transition: .4s;
+}
+
+input:checked + .slider {
+background-color:black;
+}
+
+input:focus + .slider {
+box-shadow: 0 0 1px black;
+}
+
+input:checked + .slider:before {
+-webkit-transform: translateX(26px);
+-ms-transform: translateX(26px);
+transform: translateX(26px);
+}
+.slider.round {
+border-radius: 34px;
+}
+
+.slider.round:before {
+border-radius: 50%;
+}
+/*#endregion Switch*/
+
+/*#region RangeSelector*/
+.range-slider .input-range {
+-webkit-appearance: none;
+  height: 5px;
+  width: 200px;
+  border-radius: 5px;
+  background: #ccc;
+  outline: none;
+  writing-mode: bt-lr; /* IE */
+  appearance: none; /* WebKit */    
+  transform: rotate(90deg);
+}
+
+.range-slider ::-moz-range-track {
+  background: #ccc;
+  border: 0;
+}
+
+input::-moz-focus-inner { 
+border: 0; 
+}
+.range-slider .input-range::-webkit-slider-thumb {
+border-radius: 12px;
+-webkit-appearance: none; /* Override default look */
+appearance: none;
+width: 20px; /* Set a specific slider handle width */
+height: 20px; /* Slider handle height */
+background: #000; /* Green background */
+cursor: pointer; /* Cursor on hover */
+}
+
+.range-slider .input-range::-moz-range-thumb {
+border-radius: 12px;
+width: 20px; /* Set a specific slider handle width */
+height: 20px; /* Slider handle height */
+background: #000; /* Green background */
+cursor: pointer; /* Cursor on hover */
+}
+
+.swiper-wrapper{
+  position: relative;
+    width: 20000px;
+    height: 100%;
+    z-index: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-transition-property: -webkit-transform;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform,-webkit-transform;
+}
+
+/*#endregion RangeSelector*/
+
+@media only screen and (max-width: 991px) {
+
+  body{
+    position: relative;
+  }
+
+  #btnFullScreen{
+    display: none;
+  }
+
+  body .container{
+  position: absolute;
+  top: 50%;
+  }
+
+  .container {
+    margin: 0;
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    z-index: 999999999;
+    clear:both;
+  }
+
+  .container .content {
+    width: 100%;
+    margin: 0;
+    }
+
+    /* .slick-slide{
+      margin-left: 30px;
+    } */
+    .slideshow-footer{
+      position: fixed;
+      /* right: 0; */
+      bottom: 0px;
+      right: 0px;
+    }
+    .slideshow-thumbnails{
+      position: absolute;
+    width: 90%;
+    bottom: 60px;
+    }
+    .range-slider .input-range{
+      width: 100px;
+    }
+
+    .mySlides canvas,.mySlides video{
+      border-radius: 0px;
+  }
+
+  .swatchesContainer{
+    z-index: 99999;
+  }
+
+    .slideshow-header{
+      position: fixed;
+      top: 5px;
+      left: 5px;
+    }
+
+    .top-buttons{
+      position: fixed;
+      top: 10px;
+      right: 5px;
+      margin:unset
+    }
+}
+
+  @media only screen and (max-width:767px){
+    .btn-slideshow-footer span{
+      display: none;
+    }
+  }

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/draggable.css">
+    <script src="script/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <script src="script/swiper/swiper.js"></script>
+    <link rel="stylesheet" href="style/swiper/swiper.css">
+    <script src="script/jquery-ui.js"></script>
+    <!-- <script src="script/jquery.draggableTouch.js"></script> -->
+    <script src="script/jquery.ui.touch-punch.js"></script>
+    <link rel="stylesheet" href="style/jquery-ui.css">
+    <link rel="stylesheet" href="style/swatches/swatches.css">
+    <script src="script/swatches/swatches.js"></script>
+    <script src="script/script.js" ></script>
+    <script>
+      $(document).ready(function () {
+          swatch.Init();
+          swatch.OnColorClick();
+
+          picViewer.InitBindings();
+          picViewer.InitSlick();
+          picViewer.AddDraggableImage("img/0.jpg");
+          picViewer.InitCalculation();
+          picViewer.SetZoomValue();
+
+          var selectedImageSrc = $(".gallery.swiper-wrapper").find("img").attr("src");
+
+          setTimeout(() => {
+            picViewer.SelectSlide(selectedImageSrc);
+          }, 100);
+        });
+    </script>
+
+</head>
+<body>
+    <!-- Container for the image gallery -->
+<div class="container">
+  <div class="top-buttons">
+    <button type="button" id="btnClose" class="btn-slideshow"><i class="fas fa-times"></i></button>  
+    <button type="button" id="btnFullScreen" class="btn-slideshow"><i class="fas fa-expand"></i></button>
+    </div>
+    <div class="content">
+      <div class="slideshow-header pull-up">
+        <label class="switch">
+          <input type="checkbox" id="chkShowInterface" checked>
+          <span class="slider round"></span>
+        </label>
+        <div class="interface-label">
+          <span>Show Interface</span>
+      </div>
+      </div>
+      <div class="slideshow-body">
+        <div class="slideshow-thumbnails pull-up">
+          <div id="slideshow-gallery" class="swiper-container" style="position: unset;">
+            <div class="gallery swiper-wrapper">
+              <div class="swiper-slide"><img src="bg-images/1.png"/></div>
+              <div class="swiper-slide"><img src="bg-images/2.jpg" /></div>
+              <div class="swiper-slide"><img src="bg-images/3.jpg"/></div>
+              <div class="swiper-slide"><img src="bg-images/4.jpg"/></div>
+              <div class="swiper-slide"><img src="bg-images/5.jpg" /></div>
+              <div class="swiper-slide"><img src="bg-images/6.jpg" /></div>
+              <div class="swiper-slide"><img src="bg-images/7.jpg" /></div>
+              <div class="swiper-slide"><img src="bg-images/8.jpg"" /></div>
+              <div class="swiper-slide"><img src="bg-images/9.jpg" /></div>
+              <div class="swiper-slide"><img src="bg-images/10.jpg" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="draggable-image" id="draggable">
+          <img id="imgDraggable" src="img/0.jpg">          
+        </div>
+        <div class="mySlides" style="display: block;">
+            <canvas id="imageCanvas"></canvas>
+            <img crossOrigin="Anonymous" id="imgCanvas" style="opacity: 0;visibility:hidden;">
+            <video id="livePrevVideo"></video>
+        </div>
+        <div class="slideshow-right-control pull-up">
+          <div class="range-slider">
+            <input class="input-range" id="picResizer" orient="vertical" type="range" step="1" min="0" max="100">
+        </div> 
+      </div> 
+      </div>
+      <div class="slideshow-footer">
+        <button type="button" style="background: yellow;" id="btnPreview" class="btn-slideshow-footer"><span>Live Preview</span>&nbsp;<svg height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10.562" r="3.75"></circle><path d="m3.20710678 5h1.79289322l.3506975-1.05209251c.09818562-.29455685.26360332-.56220831.48315304-.78175803l.16614946-.16614946c.32014462-.32014462.75435391-.5 1.20710678-.5h5.58578642c.4527529 0 .8869622.17985538 1.2071068.5l.1661495.16614946c.2195497.21954972.3849674.48720118.483153.78175803l.3506975 1.05209251h2.125c.3934466 0 .763932.1852427 1 .5.2434165.32455532.375.71930585.375 1.125v9.25c0 .4056942-.1315835.8004447-.375 1.125-.236068.3147573-.6065534.5-1 .5h-13.91789322c-.45275287 0-.88696216-.1798554-1.20710678-.5s-.5-.7543539-.5-1.2071068v-9.08578642c0-.45275287.17985538-.88696216.5-1.20710678s.75435391-.5 1.20710678-.5z" stroke-linejoin="round"></path></g></svg></button>
+        <button type="button" style="background: yellow;" id="btnBackgrounds" class="btn-slideshow-footer"><span>Backgrounds</span>&nbsp;<svg height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="1.5"><path d="m1.5 3.5h17v13h-17z"></path><path d="m2 11.763 3.018-2.263 4 3 2-1 2 1h5" transform="matrix(-1 0 0 1 20.018 0)"></path><circle cx="6" cy="7.5" r="1.25"></circle></g></svg></button>  
+        <button type="button" id="btnSave" class="btn-slideshow-footer"><span>Save</span>&nbsp;<svg height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="1.5"><path d="m10 3.5v10.006m3.884-3.5-3.884 3.5-3.885-3.501"></path><path d="m3 14.5v1c0 .5522847.44771525 1 1 1h12c.5522847 0 1-.4477153 1-1v-1"></path></g></svg></button>  
+        <input type="file" id="selectedFilePreview" style="display: none;" />
+        <button type="button" onclick="document.getElementById('selectedFilePreview').click();" id="btnUpload" class="btn-slideshow-footer"><span>Upload</span>&nbsp;&nbsp;<svg height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="1.5"><path d="m1.5 3.5h17v13h-17z"></path><path d="m2 11.763 3.018-2.263 4 3 2-1 2 1h5" transform="matrix(-1 0 0 1 20.018 0)"></path><circle cx="6" cy="7.5" r="1.25"></circle></g></svg></button>
+        <button type="button" id="btnPaint" class="btn-slideshow-footer"><span>Paint</span> &nbsp;<svg height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="m12.4727756 16.6577787c2.5019115 0 4.6715577-1.9702069 4.6715577-5.2394577 0-3.26925089-2.8629766-8.418321-8.05440977-8.418321-5.1914332 0-7.00733649 3.59617595-7.08788059 6.70196427-.0805441 3.10578833 2.23882359 7.02888933 3.71967287 6.29330793 1.48084928-.7355815-.64696022-3.197132.87869143-3.5240571 1.52565165-.326925 3.37045696 4.1865636 5.87236836 4.1865636z" stroke="currentColor" stroke-width="1.5"></path><g fill="currentColor"><circle cx="8.625" cy="6.125" r="1.125"></circle><circle cx="12.125" cy="7.125" r="1.125"></circle><circle cx="14.125" cy="10.125" r="1.125"></circle><circle cx="13.125" cy="13.125" r="1.125"></circle></g></g></svg></button>  
+        <select class="btn-slideshow-footer" id="ddl-product-sizes">
+          <option value=""></option>
+        </select>
+          <div class="swatchesContainer">
+          </div>
+      </div>
+     
+    </div>
+  </div>
+</body>
+</html>
+
+
